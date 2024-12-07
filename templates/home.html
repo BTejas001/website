@@ -1,0 +1,98 @@
+{% extends "layouts.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        
+        .navbar {
+            background-color: black;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-around;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            display: block;
+            text-align: center;
+        }
+        .navbar a:hover {
+            background-color: #162447;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .intro-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px;
+        background-color: #0d1b2a;
+        opacity: 85%;
+        color: white;
+    }
+    .intro-text {
+        max-width: 50%;
+        margin-right: 20px;
+    }
+    .intro-text h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+    .intro-text p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+    .cta-button {
+        display: inline-block;
+        padding: 15px 25px;
+        font-size: 1rem;
+        color: white;
+        background-color: #3ddc84;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s, box-shadow 0.3s;
+    }
+    .cta-button:hover {
+        background-color: #28a745;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    .intro-image img {
+        border-radius: 50%;
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+    }
+    </style>
+</head>
+<body>
+    
+    <div class="content">
+        <h2>Welcome to My Portfolio Website</h2>
+    </div>
+    
+    <div class="intro-section">
+        <div class="intro-text">
+            <h2>Hi there! I'm Tejas Bhusari</h2>
+            <p>
+                I’m a final-year B.Tech student in Data Science with a strong academic record (CGPA: 9.18). My interests include machine learning, predictive analytics, natural language processing, and Python development, and I’m passionate about solving real-world challenges with innovative, data-driven solutions.            </p>
+            <p>
+                I’m actively seeking opportunities to apply my skills in building intelligent systems, developing scalable software, and tackling complex problems. With a commitment to continuous learning, I’m excited to contribute to impactful projects and make a meaningful difference in the tech world.            </p>
+            <a href="{{ url_for('about') }}" class="cta-button">Let’s get started</a>
+        </div>
+        <div class="intro-image">
+            <img src="{{ url_for('static', filename='images/image.png') }}" alt="Your Image">
+        </div>
+    </div>
+</body>
+</html>
+{% endblock content %}

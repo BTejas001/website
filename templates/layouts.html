@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        /* General styling for the body */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url("{{ url_for('static', filename='images/bgimg.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: black;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+            text-align: center;
+            font-size: 1.1rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #3ddc84;
+            color: black;
+        }
+        .navbar a.active {
+            background-color: #162447;
+            color: white;
+        }
+
+        /* Content styling */
+        .content {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="{{ url_for('home') }}" class="{% if title == 'Home' %}active{% endif %}">Home</a>
+        <a href="{{ url_for('projects') }}" class="{% if title == 'Projects' %}active{% endif %}">Projects</a>
+        <a href="{{ url_for('about') }}" class="{% if title == 'About' %}active{% endif %}">About</a>
+        <a href="{{ url_for('contact') }}" class="{% if title == 'Contact' %}active{% endif %}">Contact</a>
+        <a href="{{ url_for('static', filename='files/Tejas Bhusari.pdf') }}" target="_blank" download>My Resume</a>
+    </div>
+
+    <!-- Page-specific content -->
+    {% block content %}
+    {% endblock content %}
+</body>
+</html>

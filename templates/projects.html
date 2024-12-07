@@ -1,0 +1,170 @@
+{% extends "layouts.html" %}
+
+{% block content %}
+<style>
+    .projects-container {
+        padding: 40px 20px;
+        background-color: #0000009c;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project-card {
+        width: 100%;
+        max-width: 800px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        margin-bottom: 20px;
+        padding: 25px;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .project-card:hover {
+        transform: scale(1.03);
+        background-color: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-card h3 {
+        color: #ffffff;
+        margin-bottom: 10px;
+        transition: color 0.3s ease;
+    }
+
+    .project-card:hover h3 {
+        color: #00ffff;
+    }
+
+    .project-description {
+        color: #dddddd;
+        margin-bottom: 15px;
+        max-height: 60px;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .project-description.expanded {
+        max-height: 500px; /* Adjust as needed */
+    }
+
+    .view-more {
+        color: #00ffff;
+        cursor: pointer;
+        font-weight: bold;
+        transition: color 0.3s ease;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+
+    .view-more:hover {
+        color: #ffffff;
+    }
+
+    .extended-description {
+        display: none;
+        color: #dddddd;
+        margin-bottom: 15px;
+    }
+
+    .extended-description.visible {
+        display: block;
+    }
+
+    .project-link {
+        display: none;
+        color: #00ffff;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+        margin-top: 10px;
+    }
+
+    .project-link.visible {
+        display: inline-block;
+    }
+
+    .project-link:hover {
+        color: #ffffff;
+        text-decoration: underline;
+    }
+</style>
+
+<div class="projects-container">
+    <h1 style="text-align: center; color: white; margin-bottom: 30px;">My Projects</h1>
+    
+    <div class="project-card">
+        <h3>Arithmetic Word Problem Solver with Transformer</h3>
+        <p class="project-description">
+            Fine-tuned transformer models to solve arithmetic word problems using advanced NLP techniques.
+        </p>
+        <div class="view-more" onclick="toggleDescription(this)">View More</div>
+        <p class="extended-description">
+            This project delves deep into Natural Language Processing (NLP) by leveraging transformer models to solve complex arithmetic word problems. Key features include:
+            - Advanced text preprocessing techniques
+            - Fine-tuning state-of-the-art transformer architectures
+            - Handling various problem structures and mathematical contexts
+            - Achieving high accuracy in problem interpretation and solution generation
+        </p>
+        <a href="https://github.com/BTejas001" target="_blank" class="project-link">View Project on GitHub</a>
+    </div>
+    
+    <div class="project-card">
+        <h3>Predictive Analytics for House & Car Pricing</h3>
+        <p class="project-description">
+            Built regression models for real-time price predictions using Flask web apps.
+        </p>
+        <div class="view-more" onclick="toggleDescription(this)">View More</div>
+        <p class="extended-description">
+            A comprehensive predictive analytics solution for real estate and automotive pricing. Highlights include:
+            - Developed machine learning regression models
+            - Created interactive Flask web applications
+            - Implemented feature engineering techniques
+            - Used advanced statistical methods for accurate price prediction
+            - Integrated data visualization for insights
+        </p>
+        <a href="https://github.com/BTejas001" target="_blank" class="project-link">View Project on GitHub</a>
+    </div>
+    
+    <div class="project-card">
+        <h3>Banking Management System</h3>
+        <p class="project-description">
+            Designed a modular banking system using OOP principles and MySQL database management.
+        </p>
+        <div class="view-more" onclick="toggleDescription(this)">View More</div>
+        <p class="extended-description">
+            A robust banking management application demonstrating software engineering best practices:
+            - Implemented Object-Oriented Programming (OOP) principles
+            - Created a comprehensive MySQL database backend
+            - Developed secure user authentication mechanisms
+            - Implemented transaction tracking and account management
+            - Designed intuitive user interfaces for banking operations
+        </p>
+        <a href="https://github.com/BTejas001" target="_blank" class="project-link">View Project on GitHub</a>
+    </div>
+</div>
+
+<script>
+    function toggleDescription(element) {
+        const card = element.closest('.project-card');
+        const projectDescription = card.querySelector('.project-description');
+        const extendedDescription = card.querySelector('.extended-description');
+        const viewMoreBtn = card.querySelector('.view-more');
+        const projectLink = card.querySelector('.project-link');
+
+        projectDescription.classList.toggle('expanded');
+        extendedDescription.classList.toggle('visible');
+        projectLink.classList.toggle('visible');
+
+        if (viewMoreBtn.textContent === 'View More') {
+            viewMoreBtn.textContent = 'View Less';
+        } else {
+            viewMoreBtn.textContent = 'View More';
+            projectLink.classList.remove('visible');
+        }
+    }
+</script>
+{% endblock content %}
